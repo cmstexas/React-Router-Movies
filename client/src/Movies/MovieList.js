@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 const MovieList = props => {
@@ -18,10 +19,12 @@ const MovieList = props => {
     getMovies();
   }, []);
   
+  //mapping through each movie, want to make a link that we can click = want to link to id of each movie//
+
   return (
     <div className="movie-list">
       {movies.map(movie => (
-        <MovieDetails key={movie.id} movie={movie} />
+        <Link to = {`/movies/${movie.id}`} > <MovieDetails key={movie.id} movie={movie} /> </Link>
       ))}
     </div>
   );
@@ -46,6 +49,7 @@ function MovieDetails({ movie }) {
         </div>
       ))}
     </div>
+  
   );
 }
 
